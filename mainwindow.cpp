@@ -55,12 +55,18 @@ void MainWindow::on_openButton_clicked()
     }
 
     QTextStream inputText (&inputFile);
-    ui->textBrowser->setText(inputText.readAll());
+    ui->textEdit->setText(inputText.readAll());
+
+    outputFileHtml.open(QIODevice::ReadWrite);
+    QTextStream outText (&outputFileHtml);
+    QString str = ui->textEdit->toPlainText().toUtf8();
+    QStringList row = str.split("\n");
+    for (int i=0;i<row.size();i++)
+    {
+        outText << row[i]+"\r\n";
+    }
 
 
-    outputFileHtml.open(QIODevice::WriteOnly);
-    //QTextStream outText (&outputFileHtml);
-    outputFileHtml.write(ui->textBrowser->toPlainText().toUtf8());
 }
 
 //=====================================================
