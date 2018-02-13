@@ -66,6 +66,8 @@ void MainWindow::on_openButton_clicked()
         outText << row[i]+"\r\n";
     }
 
+    inputFile.close();
+    outputFileHtml.close();
 
 }
 
@@ -76,7 +78,19 @@ void MainWindow::on_openButton_clicked()
 void MainWindow::on_genegateButton_clicked()
 {
 
+    QFile outputFile("out.txt");
+    QFile outputFileHtml("outhtml.txt");
+    outputFileHtml.open(QIODevice::ReadOnly);
+    outputFile.open(QIODevice::ReadWrite);
+    QTextStream generate(&outputFile);
+    while(!outputFileHtml.atEnd())
+    {
+        QString str = outputFileHtml.readLine();
+        if (str == "C1\n")
+        {
 
+        }
+    }
 
 }
 
