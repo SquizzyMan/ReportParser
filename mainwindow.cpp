@@ -37,6 +37,7 @@ QFile outputFile2("out2.txt");
 
 void MainWindow::on_openButton_clicked()
 {
+
     inputFileName = QFileDialog::getOpenFileName(
                     this,
                     tr("Open File"),
@@ -58,7 +59,7 @@ void MainWindow::on_openButton_clicked()
     QTextStream inputText (&inputFile);
     ui->textEdit->setText(inputText.readAll());
 
-    outputFileHtml.open(QIODevice::ReadWrite);
+    outputFileHtml.open(QIODevice::ReadWrite | QIODevice::Truncate);
     QTextStream outText (&outputFileHtml);
     QString str = ui->textEdit->toPlainText().toUtf8();
     QStringList row = str.split("\n");
@@ -83,41 +84,71 @@ void MainWindow::on_genegateButton_clicked()
     QFile outputFile1("out.txt");
     QFile outputFileHtml("outhtml.txt");
     QFile outputFile2("generate.txt");
-    outputFileHtml.open(QIODevice::ReadOnly);
-    outputFile.open(QIODevice::ReadWrite);
-    outputFile2.open(QIODevice::ReadWrite);
+    outputFileHtml.open(QIODevice::ReadOnly | QIODevice::Truncate);
+    outputFile.open(QIODevice::ReadWrite | QIODevice::Truncate);
+    outputFile2.open(QIODevice::ReadWrite | QIODevice::Truncate);
     QTextStream generate(&outputFile);
     QTextStream generate2(&outputFile2);
-    int j=0, x=0;
+    int j=0;
 
     for (int i = 0; i < outputFileHtml.size(); i++)
     {
         QString inputText = outputFileHtml.readLine();
         if (j==16)
         {
-        generate << inputText;
+            generate << inputText;
         }
         else
         {
-        j++;
+            j++;
         }
     }
 
     outputFile.close();
+    outputFile1.open(QIODevice::ReadOnly | QIODevice::Truncate);
 
-    outputFile1.open(QIODevice::ReadOnly);
-    for (int i = 0; i < outputFile1.size(); i++)
+    while(!outputFile1.atEnd())
     {
         QString inputText2 = outputFile1.readLine();
-        if (x==16)
+        if (inputText2 != "YES\r\n")
         {
-        generate2 << inputText2;
+            if (inputText2 != "NO\r\n")
+            {
+                if (inputText2 != "\r\n" || inputText2 != " \r\n")
+                {
+                    QString outputText = inputText2.remove("\r\n") + "\t";
+                    generate2 << outputText;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                inputText2 = "bot\r\n";
+                generate2 << inputText2;
+                /*if (inputText2 == "YES\r\n")
+                {
+                    inputText2 = "top\r\n";
+                    generate2 << inputText2;
+                }
+                else
+                {
+                    inputText2 = "bot\r\n";
+                    generate2 << inputText2;
+                }*/
+            }
         }
         else
         {
-        x++;
+            inputText2 = "top\r\n";
+            generate2 << inputText2;
         }
+
     }
+    outputFile1.close();
+    outputFile2.close();
 }
 
 //=====================================================
