@@ -29,6 +29,7 @@ QString inputFileName;
 QFile inputFile(inputFileName);
 QFile outputFile("out.txt");
 QFile outputFileHtml("outhtml.txt");
+QFile outputFile2("out2.txt");
 
 //=====================================================
 //=============== Open file dialog ====================
@@ -66,6 +67,8 @@ void MainWindow::on_openButton_clicked()
         outText << row[i]+"\r\n";
     }
 
+    inputFile.close();
+    outputFileHtml.close();
 
 }
 
@@ -76,8 +79,45 @@ void MainWindow::on_openButton_clicked()
 void MainWindow::on_genegateButton_clicked()
 {
 
+    QFile outputFile("out.txt");
+    QFile outputFile1("out.txt");
+    QFile outputFileHtml("outhtml.txt");
+    QFile outputFile2("generate.txt");
+    outputFileHtml.open(QIODevice::ReadOnly);
+    outputFile.open(QIODevice::ReadWrite);
+    outputFile2.open(QIODevice::ReadWrite);
+    QTextStream generate(&outputFile);
+    QTextStream generate2(&outputFile2);
+    int j=0, x=0;
 
+    for (int i = 0; i < outputFileHtml.size(); i++)
+    {
+        QString inputText = outputFileHtml.readLine();
+        if (j==16)
+        {
+        generate << inputText;
+        }
+        else
+        {
+        j++;
+        }
+    }
 
+    outputFile.close();
+
+    outputFile1.open(QIODevice::ReadOnly);
+    for (int i = 0; i < outputFile1.size(); i++)
+    {
+        QString inputText2 = outputFile1.readLine();
+        if (x==16)
+        {
+        generate2 << inputText2;
+        }
+        else
+        {
+        x++;
+        }
+    }
 }
 
 //=====================================================
