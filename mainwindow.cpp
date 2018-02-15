@@ -84,6 +84,7 @@ void MainWindow::on_genegateButton_clicked()
     QFile outputFile1("out.txt");
     QFile outputFileHtml("outhtml.txt");
     QFile outputFile2("generate.txt");
+    QFile outputFile3("generate.txt");
     outputFileHtml.open(QIODevice::ReadOnly | QIODevice::Truncate);
     outputFile.open(QIODevice::ReadWrite | QIODevice::Truncate);
     outputFile2.open(QIODevice::ReadWrite | QIODevice::Truncate);
@@ -114,30 +115,20 @@ void MainWindow::on_genegateButton_clicked()
         {
             if (inputText2 != "NO\r\n")
             {
-                if (inputText2 != "\r\n" || inputText2 != " \r\n")
+                if (inputText2 != "\r\n")
                 {
-                    QString outputText = inputText2.remove("\r\n") + "\t";
+                    QString outputText = inputText2.remove("\r\n") + " \t";
                     generate2 << outputText;
                 }
                 else
                 {
-                    return;
+                    break;
                 }
             }
             else
             {
                 inputText2 = "bot\r\n";
                 generate2 << inputText2;
-                /*if (inputText2 == "YES\r\n")
-                {
-                    inputText2 = "top\r\n";
-                    generate2 << inputText2;
-                }
-                else
-                {
-                    inputText2 = "bot\r\n";
-                    generate2 << inputText2;
-                }*/
             }
         }
         else
@@ -149,6 +140,37 @@ void MainWindow::on_genegateButton_clicked()
     }
     outputFile1.close();
     outputFile2.close();
+
+    outputFile3.open(QIODevice::ReadOnly);
+    QString Str = "Filename: \n\nPosition of PCB: \nLeft under edge: X=0 / Y=0 \n\nname\tX-axis\tY-axis\tangle\tvalue\tpackage\tside\n\n";
+    QString Str2 = "REF1T\t0.00\t0.00\t0.00\t1mm\tCircle\ttop\nREF2T\t0.00\t0.00\t0.00\t1mm\tCircle\ttop\nREF1B\t0.00\t0.00\t0.00\t1mm\tCircle\tbot\nREF2B\t0.00\t0.00\t0.00\t1mm\tCircle\tbot\n\n";
+    ui->textEdit_2->clear();
+    ui->textEdit_2->append(Str);
+    ui->textEdit_2->append(Str2);
+    qint32 topCount=0, botCount=0, lineCount=0;
+    QString outputText1;
+    while(!outputFile3.atEnd())
+    {
+        QString inputText3 = outputFile3.readLine();
+        QStringList listSort = inputText3.split(QRegExp("\\s\\t"),QString::SkipEmptyParts);
+        QString pos = listSort.at(8);
+                        if (pos == "top\r\n")
+                        {
+                            pos = "top";
+                            topCount++;
+                        }
+                        else
+                        {
+                            pos = "bot";
+                            botCount++;
+                        }
+        outputText1 = (listSort.at(0) + "\t" + listSort.at(5) + "\t" + listSort.at(6) + "\t" + listSort.at(7) + "\t" + listSort.at(2) + "\t" + listSort.at(1) + "\t" + pos);
+        ui->textEdit_2->append(outputText1);
+        lineCount++;
+    }
+    ui->allCount->setNum(lineCount);
+    ui->allCountTop->setNum(topCount);
+    ui->allCountBot->setNum(botCount);
 }
 
 //=====================================================
@@ -169,7 +191,7 @@ void MainWindow::on_saveButton_clicked()
                 }
                 else
                 {
-                    file.write(ui->textEdit->toPlainText().toUtf8());
+                    file.write(ui->textEdit_2->toPlainText().toUtf8());
                     file.close();
                 }
             }
