@@ -32,7 +32,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(146, 165, 205);</string>
+   <string notr="true">background-color: rgb(184, 197, 223);</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTextEdit" name="textEdit">
@@ -162,7 +162,7 @@ border-color: rgb(170, 0, 0);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(128, 162, 0);</string>
+     <string notr="true">background-color: rgb(161, 84, 30)</string>
     </property>
     <property name="text">
      <string>ВЫХОД</string>
