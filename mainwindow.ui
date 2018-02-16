@@ -23,7 +23,11 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Report parser</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="BMP.qrc">
+    <normaloff>:/C:/Users/AdminK.ZENIT/Desktop/RP.bmp</normaloff>:/C:/Users/AdminK.ZENIT/Desktop/RP.bmp</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(184, 197, 223);</string>
@@ -274,6 +278,8 @@ border-color: rgb(170, 0, 0);</string>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="BMP.qrc"/>
+ </resources>
  <connections/>
 </ui>

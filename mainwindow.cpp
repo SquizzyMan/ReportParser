@@ -79,7 +79,6 @@ void MainWindow::on_openButton_clicked()
 
 void MainWindow::on_genegateButton_clicked()
 {
-
     QFile outputFile("out.txt");
     QFile outputFile1("out.txt");
     QFile outputFileHtml("outhtml.txt");
@@ -142,11 +141,13 @@ void MainWindow::on_genegateButton_clicked()
     outputFile2.close();
 
     outputFile3.open(QIODevice::ReadOnly);
+    // Create title
     QString Str = "Filename: \n\nPosition of PCB: \nLeft under edge: X=0 / Y=0 \n\nname\tX-axis\tY-axis\tangle\tvalue\tpackage\tside\n\n";
     QString Str2 = "REF1T\t0.00\t0.00\t0.00\t1mm\tCircle\ttop\nREF2T\t0.00\t0.00\t0.00\t1mm\tCircle\ttop\nREF1B\t0.00\t0.00\t0.00\t1mm\tCircle\tbot\nREF2B\t0.00\t0.00\t0.00\t1mm\tCircle\tbot\n\n";
     ui->textEdit_2->clear();
     ui->textEdit_2->append(Str);
     ui->textEdit_2->append(Str2);
+
     qint32 topCount=0, botCount=0, lineCount=0;
     QString outputText1;
     while(!outputFile3.atEnd())
@@ -171,6 +172,7 @@ void MainWindow::on_genegateButton_clicked()
     ui->allCount->setNum(lineCount);
     ui->allCountTop->setNum(topCount);
     ui->allCountBot->setNum(botCount);
+    outputFile3.close();
 }
 
 //=====================================================
