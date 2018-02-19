@@ -217,6 +217,7 @@ void MainWindow::on_genegateButton_clicked()
             ui->tableWidget->setItem(row, 5, newItem6);
             ui->tableWidget->setItem(row, 6, newItem7);
     }
+    outputFile4.close();
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 

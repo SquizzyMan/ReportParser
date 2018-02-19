@@ -67,7 +67,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Количество элементов:</string>
+       <string>Количество элементов</string>
       </property>
      </widget>
     </item>
@@ -79,6 +79,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
       </property>
       <property name="text">
        <string/>
@@ -171,7 +174,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Количество TOP:</string>
+       <string>Количество TOP</string>
       </property>
      </widget>
     </item>
@@ -200,7 +203,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Количество BOT:</string>
+       <string>Количество BOT</string>
       </property>
      </widget>
     </item>
