@@ -46,7 +46,7 @@ void MainWindow::on_openButton_clicked()
 
                     );
     ui->lineEdit->setText(inputFileName);
-
+    ui->genegateButton->setEnabled(true);
     QFile inputFile(inputFileName);
     if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -84,6 +84,7 @@ void MainWindow::on_genegateButton_clicked()
     QFile outputFileHtml("outhtml.txt");
     QFile outputFile2("generate.txt");
     QFile outputFile3("generate.txt");
+    QFile outputFile4("generate.txt");
     outputFileHtml.open(QIODevice::ReadOnly | QIODevice::Truncate);
     outputFile.open(QIODevice::ReadWrite | QIODevice::Truncate);
     outputFile2.open(QIODevice::ReadWrite | QIODevice::Truncate);
@@ -173,6 +174,20 @@ void MainWindow::on_genegateButton_clicked()
     ui->allCountTop->setNum(topCount);
     ui->allCountBot->setNum(botCount);
     outputFile3.close();
+
+//============= Generate in table =====================
+
+    outputFile4.open(QIODevice::ReadOnly);
+    QString outputText2;
+    for (int row = 0; !outputFile4.atEnd(); row++){
+        for (int col = 0; col < 9; col++)
+        {
+            QString inputText4 = outputFile4.readLine();
+            QTableWidgetItem *newItem = new QTableWidgetItem();
+            newItem -> setText(inputText4);
+            ui->tableWidget->setItem(row, col, newItem);
+        }
+    }
 }
 
 //=====================================================
@@ -206,4 +221,23 @@ void MainWindow::on_saveButton_clicked()
 void MainWindow::on_exitButton_clicked()
 {
     QApplication::quit();
+}
+
+void MainWindow::on_radioButton_clicked()
+{
+
+    if(ui->radioButton->isChecked())
+    {
+        ui->tableWidget->hide();
+        ui->textEdit_2->show();
+    }
+}
+
+void MainWindow::on_radioButton_2_clicked()
+{
+    if(ui->radioButton_2->isChecked())
+    {
+        ui->textEdit_2->hide();
+        ui->tableWidget->show();
+    }
 }
