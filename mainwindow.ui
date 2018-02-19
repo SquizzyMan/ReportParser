@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
+    <width>1203</width>
     <height>960</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
@@ -23,129 +29,35 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Report parser</string>
+   <string>Обработчик отчетов</string>
   </property>
   <property name="windowIcon">
    <iconset resource="BMP.qrc">
-    <normaloff>:/C:/Users/AdminK.ZENIT/Desktop/RP.bmp</normaloff>:/C:/Users/AdminK.ZENIT/Desktop/RP.bmp</iconset>
+    <normaloff>:/ico/RP.bmp</normaloff>:/ico/RP.bmp</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(184, 197, 223);</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTextEdit" name="textEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>120</y>
-      <width>1180</width>
-      <height>435</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>1180</width>
-      <height>435</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(222, 255, 222);
-border-color: rgb(170, 0, 0);</string>
-    </property>
-    <property name="lineWrapMode">
-     <enum>QTextEdit::NoWrap</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>560</y>
-      <width>159</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Times New Roman</family>
-      <pointsize>16</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Исходный файл:</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>590</y>
-      <width>1180</width>
-      <height>360</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>1180</width>
-      <height>360</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 222);
-border-color: rgb(170, 0, 0);</string>
-    </property>
-    <property name="lineWrapMode">
-     <enum>QTextEdit::NoWrap</enum>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QScrollArea" name="scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>10</y>
-      <width>451</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>449</width>
-       <height>89</height>
-      </rect>
-     </property>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>0</y>
-        <width>211</width>
-        <height>19</height>
-       </rect>
+   <layout class="QGridLayout" name="gridLayout_4">
+    <item row="0" column="0" colspan="4">
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>14</pointsize>
+       </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(240, 240, 240);</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="4">
+     <widget class="QLabel" name="label_2">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -158,15 +70,98 @@ border-color: rgb(170, 0, 0);</string>
        <string>Количество элементов:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>161</width>
-        <height>20</height>
-       </rect>
+    </item>
+    <item row="0" column="5">
+     <widget class="QLabel" name="allCount">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" rowspan="2">
+     <widget class="QPushButton" name="openButton">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(128, 162, 0);</string>
+      </property>
+      <property name="text">
+       <string>ОТКРЫТЬ</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1" rowspan="2">
+     <widget class="QPushButton" name="genegateButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(128, 162, 0);</string>
+      </property>
+      <property name="text">
+       <string>ОБРАБОТАТЬ</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2" rowspan="2">
+     <widget class="QPushButton" name="saveButton">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(128, 162, 0);</string>
+      </property>
+      <property name="text">
+       <string>СОХРАНИТЬ</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3" rowspan="2">
+     <widget class="QPushButton" name="exitButton">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(161, 84, 30)</string>
+      </property>
+      <property name="text">
+       <string>ВЫХОД</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="4">
+     <widget class="QLabel" name="label_4">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -179,15 +174,23 @@ border-color: rgb(170, 0, 0);</string>
        <string>Количество TOP:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>161</width>
-        <height>19</height>
-       </rect>
+    </item>
+    <item row="1" column="5">
+     <widget class="QLabel" name="allCountTop">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="4">
+     <widget class="QLabel" name="label_3">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -200,55 +203,9 @@ border-color: rgb(170, 0, 0);</string>
        <string>Количество BOT:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="allCount">
-      <property name="geometry">
-       <rect>
-        <x>230</x>
-        <y>0</y>
-        <width>111</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="allCountTop">
-      <property name="geometry">
-       <rect>
-        <x>230</x>
-        <y>30</y>
-        <width>111</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
+    </item>
+    <item row="2" column="5">
      <widget class="QLabel" name="allCountBot">
-      <property name="geometry">
-       <rect>
-        <x>230</x>
-        <y>60</y>
-        <width>111</width>
-        <height>21</height>
-       </rect>
-      </property>
       <property name="minimumSize">
        <size>
         <width>0</width>
@@ -266,305 +223,213 @@ border-color: rgb(170, 0, 0);</string>
        <string/>
       </property>
      </widget>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>711</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string/>
-    </property>
-    <widget class="QPushButton" name="exitButton">
-     <property name="geometry">
-      <rect>
-       <x>530</x>
-       <y>40</y>
-       <width>171</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Times New Roman</family>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(161, 84, 30)</string>
-     </property>
-     <property name="text">
-      <string>ВЫХОД</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="saveButton">
-     <property name="geometry">
-      <rect>
-       <x>360</x>
-       <y>40</y>
-       <width>161</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Times New Roman</family>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(128, 162, 0);</string>
-     </property>
-     <property name="text">
-      <string>СОХРАНИТЬ</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="genegateButton">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>180</x>
-       <y>40</y>
-       <width>171</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Times New Roman</family>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(128, 162, 0);</string>
-     </property>
-     <property name="text">
-      <string>ОБРАБОТАТЬ</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="radioButton_2">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>70</y>
-       <width>104</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Просмотр</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="radioButton">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>70</y>
-       <width>164</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Редактирование</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="openButton">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>40</y>
-       <width>171</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Times New Roman</family>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(128, 162, 0);</string>
-     </property>
-     <property name="text">
-      <string>ОТКРЫТЬ</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>10</y>
-       <width>701</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Times New Roman</family>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(240, 240, 240);</string>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QTableWidget" name="tableWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>120</y>
-      <width>1180</width>
-      <height>435</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>1180</width>
-      <height>435</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Times New Roman</family>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(222, 255, 222);</string>
-    </property>
-    <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>160</number>
-    </attribute>
-    <attribute name="horizontalHeaderStretchLastSection">
-     <bool>true</bool>
-    </attribute>
-    <column>
-     <property name="text">
-      <string>Name</string>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>X-axis</string>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Y-axis</string>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Angle</string>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Value</string>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Package</string>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Side</string>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </column>
-   </widget>
-   <zorder>label</zorder>
-   <zorder>textEdit</zorder>
-   <zorder>scrollArea</zorder>
-   <zorder>groupBox</zorder>
-   <zorder>textEdit_2</zorder>
-   <zorder>tableWidget</zorder>
+    </item>
+    <item row="3" column="0" colspan="6">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Редактор</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QTextEdit" name="textEdit_2">
+          <property name="minimumSize">
+           <size>
+            <width>1160</width>
+            <height>435</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+            <kerning>false</kerning>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(222, 255, 222);
+border-color: rgb(170, 0, 0);</string>
+          </property>
+          <property name="lineWrapMode">
+           <enum>QTextEdit::NoWrap</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Просмотр</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QTableWidget" name="tableWidget">
+          <property name="minimumSize">
+           <size>
+            <width>1160</width>
+            <height>435</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(222, 255, 222);</string>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>169</number>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Name</string>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>X-axis</string>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Y-axis</string>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Angle</string>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Value</string>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Package</string>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Side</string>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Исходный файл:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0" colspan="6">
+     <widget class="QTextEdit" name="textEdit">
+      <property name="minimumSize">
+       <size>
+        <width>1180</width>
+        <height>340</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 222);
+border-color: rgb(170, 0, 0);</string>
+      </property>
+      <property name="lineWrapMode">
+       <enum>QTextEdit::NoWrap</enum>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

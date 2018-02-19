@@ -70,7 +70,6 @@ void MainWindow::on_openButton_clicked()
 
     inputFile.close();
     outputFileHtml.close();
-
 }
 
 //=====================================================
@@ -177,17 +176,48 @@ void MainWindow::on_genegateButton_clicked()
 
 //============= Generate in table =====================
 
+    ui->tableWidget->setRowCount(0);
     outputFile4.open(QIODevice::ReadOnly);
-    QString outputText2;
     for (int row = 0; !outputFile4.atEnd(); row++){
-        for (int col = 0; col < 9; col++)
-        {
+        ui->tableWidget->insertRow(ui->tableWidget->rowCount());
             QString inputText4 = outputFile4.readLine();
-            QTableWidgetItem *newItem = new QTableWidgetItem();
-            newItem -> setText(inputText4);
-            ui->tableWidget->setItem(row, col, newItem);
-        }
+            QStringList listSort = inputText4.split(QRegExp("\\s\\t"),QString::SkipEmptyParts);
+            QString pos = listSort.at(8);
+                            if (pos == "top\r\n")
+                            {
+                                pos = "top";
+                                topCount++;
+                            }
+                            else
+                            {
+                                pos = "bot";
+                                botCount++;
+                            }
+            QTableWidgetItem *newItem1 = new QTableWidgetItem();
+            QTableWidgetItem *newItem2 = new QTableWidgetItem();
+            QTableWidgetItem *newItem3 = new QTableWidgetItem();
+            QTableWidgetItem *newItem4 = new QTableWidgetItem();
+            QTableWidgetItem *newItem5 = new QTableWidgetItem();
+            QTableWidgetItem *newItem6 = new QTableWidgetItem();
+            QTableWidgetItem *newItem7 = new QTableWidgetItem();
+
+            newItem1 -> setText(listSort.at(0));
+            newItem2 -> setText(listSort.at(5));
+            newItem3 -> setText(listSort.at(6));
+            newItem4 -> setText(listSort.at(7));
+            newItem5 -> setText(listSort.at(2));
+            newItem6 -> setText(listSort.at(1));
+            newItem7 -> setText(pos);
+
+            ui->tableWidget->setItem(row, 0, newItem1);
+            ui->tableWidget->setItem(row, 1, newItem2);
+            ui->tableWidget->setItem(row, 2, newItem3);
+            ui->tableWidget->setItem(row, 3, newItem4);
+            ui->tableWidget->setItem(row, 4, newItem5);
+            ui->tableWidget->setItem(row, 5, newItem6);
+            ui->tableWidget->setItem(row, 6, newItem7);
     }
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 //=====================================================
@@ -221,23 +251,4 @@ void MainWindow::on_saveButton_clicked()
 void MainWindow::on_exitButton_clicked()
 {
     QApplication::quit();
-}
-
-void MainWindow::on_radioButton_clicked()
-{
-
-    if(ui->radioButton->isChecked())
-    {
-        ui->tableWidget->hide();
-        ui->textEdit_2->show();
-    }
-}
-
-void MainWindow::on_radioButton_2_clicked()
-{
-    if(ui->radioButton_2->isChecked())
-    {
-        ui->textEdit_2->hide();
-        ui->tableWidget->show();
-    }
 }
